@@ -44,8 +44,11 @@ namespace WinAkPlugin
                 this.progressBar1.Value = 0;
 
                 // 1、解压apk包
-                File.Copy(apkPath, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "apktool", apkName_andExtend));
-                bool result = ZipHelper.UnZip(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "apktool", apkName_andExtend), Path.Combine(tempDir, apkName));
+                string target_apk_path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "apktool", apkName_andExtend);
+                File.Copy(apkPath, target_apk_path);
+
+                string tempPath = Path.Combine(tempDir, apkName);
+                bool result = RarHelper.UnZip(target_apk_path, tempPath);
                 if (!result)
                 {
                     this.ShowMsg("解压文件失败");
@@ -84,7 +87,7 @@ namespace WinAkPlugin
                         smaliName = "smali_classes" + (i + 1);
                     }
 
-                    ZipHelper.UnZip(jarFile, Path.Combine(tempDir, apkName, smaliName));
+                    RarHelper.UnZip(jarFile, Path.Combine(tempDir, apkName, smaliName));
                     this.progressBar1.Value += step;
                 }
 
