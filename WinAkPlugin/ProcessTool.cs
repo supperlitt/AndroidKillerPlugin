@@ -17,6 +17,11 @@ namespace WinAkPlugin
         public static string ProecssCmd(string filename, string args = "")
         {
             Process process = new Process();
+            if (filename.Contains(":"))
+            {
+                process.StartInfo.WorkingDirectory = filename.Substring(0, filename.LastIndexOf("\\") + 1);
+            }
+
             process.StartInfo.FileName = filename;
             process.StartInfo.Arguments = args;
             process.StartInfo.UseShellExecute = false;
@@ -25,11 +30,35 @@ namespace WinAkPlugin
 
             process.StartInfo.RedirectStandardInput = true;
             process.StartInfo.RedirectStandardError = true;
-            process.StartInfo.StandardOutputEncoding = Encoding.UTF8;
+            process.StartInfo.StandardOutputEncoding = Encoding.GetEncoding("gbk");
 
             process.OutputDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
 
             process.Start();
+            process.BeginErrorReadLine();
+            process.BeginOutputReadLine();
+
+            process.WaitForExit();
+
+            return null;
+        }
+
+        public static string RunCmd(string filename, string args = "")
+        {
+            Process process = new Process();
+            process.StartInfo.FileName = filename;
+            process.StartInfo.Arguments = args;
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.CreateNoWindow = true;
+            process.StartInfo.RedirectStandardOutput = true;
+
+            process.StartInfo.RedirectStandardInput = true;
+            process.StartInfo.RedirectStandardError = true;
+            process.StartInfo.StandardOutputEncoding = Encoding.GetEncoding("gbk");
+
+            process.OutputDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
+            process.Start();
+
             process.BeginErrorReadLine();
             process.BeginOutputReadLine();
 
