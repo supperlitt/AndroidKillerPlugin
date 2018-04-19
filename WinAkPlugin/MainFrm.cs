@@ -87,7 +87,7 @@ namespace WinAkPlugin
                         string dexFile = files[i].Substring(files[i].LastIndexOf("\\") + 1);
 
                         this.ShowMsg("拷贝：" + dexFile + "；并执行dex2jar命令");
-                        File.Copy(files[i], Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dex2jar", dexFile));
+                        File.Copy(files[i], Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dex2jar", dexFile), true);
                         ProcessTool.ProecssCmd(dex2jar_path, dexFile);
 
                         this.progressBar1.Value += step;
@@ -178,6 +178,8 @@ namespace WinAkPlugin
             }
             catch (Exception e)
             {
+                this.ShowMsg("如果复制apk失败：请手动复制到 当前进程目录/apktool/ 中");
+                this.ShowMsg("如果apk解压失败：请手动解压到 当前进程目录/temp/apk文件名(不包含.apk)/ 中");
                 this.ShowMsg("出现异常:" + e.ToString());
             }
             finally
