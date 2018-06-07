@@ -1,0 +1,9 @@
+D:\code\github\AndroidKillerPlugin\WinAkPlugin\bin\Debug\WinAkPlugin.exe.config
+D:\code\github\AndroidKillerPlugin\WinAkPlugin\bin\Debug\WinAkPlugin.exe
+D:\code\github\AndroidKillerPlugin\WinAkPlugin\bin\Debug\WinAkPlugin.pdb
+D:\code\github\AndroidKillerPlugin\WinAkPlugin\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\code\github\AndroidKillerPlugin\WinAkPlugin\obj\Debug\WinAkPlugin.MainFrm.resources
+D:\code\github\AndroidKillerPlugin\WinAkPlugin\obj\Debug\WinAkPlugin.Properties.Resources.resources
+D:\code\github\AndroidKillerPlugin\WinAkPlugin\obj\Debug\WinAkPlugin.csproj.GenerateResource.Cache
+D:\code\github\AndroidKillerPlugin\WinAkPlugin\obj\Debug\WinAkPlugin.exe
+D:\code\github\AndroidKillerPlugin\WinAkPlugin\obj\Debug\WinAkPlugin.pdb

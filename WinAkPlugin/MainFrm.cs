@@ -87,6 +87,7 @@ namespace WinAkPlugin
                         string dexFile = files[i].Substring(files[i].LastIndexOf("\\") + 1);
 
                         this.ShowMsg("拷贝：" + dexFile + "；并执行dex2jar命令");
+                        File.Delete(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dex2jar", dexFile));
                         File.Copy(files[i], Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dex2jar", dexFile), true);
                         ProcessTool.ProecssCmd(dex2jar_path, dexFile);
 
